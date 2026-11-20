@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="monetra_bg">#FAFAFA</color>
+    <color name="monetra_black">#18181B</color>
+    <color name="monetra_white">#FFFFFF</color>
+    <color name="monetra_yellow">#FDE047</color>
+    <color name="monetra_yellow_light">#FEF9C3</color>
+    <color name="monetra_green">#22C55E</color>
+    <color name="monetra_green_light">#DCFCE7</color>
+    <color name="monetra_red">#F87171</color>
+    <color name="monetra_red_light">#FEE2E2</color>
+    <color name="monetra_purple">#8B5CF6</color>
+    <color name="monetra_blue">#0EA5E9</color>
+    <color name="monetra_pink">#FB7185</color>
+    <color name="monetra_gray_text">#71717A</color>
+    <color name="monetra_gray_border">#E4E4E7</color>
 </resources>
