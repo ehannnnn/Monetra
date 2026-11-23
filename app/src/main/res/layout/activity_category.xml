@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/monetra_bg">
+
+    <!-- Top Header -->
+    <LinearLayout
+        android:id="@+id/headerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_pill_outline"
+            android:contentDescription="Kembali"
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="@color/monetra_black" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Kategori"
+            android:textColor="@color/monetra_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_pill_outline"
+            android:backgroundTint="#854D0E"
+            android:gravity="center"
+            android:text="R"
+            android:textColor="@color/monetra_white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Toggle Pengeluaran / Pemasukan -->
+    <LinearLayout
+        android:id="@+id/tabTypeRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="18dp"
+        app:layout_constraintTop_toBottomOf="@id/headerCategory">
+
+        <TextView
+            android:id="@+id/tabPengeluaran"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_brutal_button_red"
+            android:gravity="center"
+            android:text="↓ PENGELUARAN"
+            android:textColor="@color/monetra_white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tabPemasukan"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_brutal_button_white"
+            android:gravity="center"
+            android:text="↑ PEMASUKAN"
+            android:textColor="@color/monetra_black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Status Aktif & Info Arsip -->
+    <LinearLayout
+        android:id="@+id/statusRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="18dp"
+        app:layout_constraintTop_toBottomOf="@id/tabTypeRow">
+
+        <TextView
+            android:id="@+id/tvActiveCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_pill_outline"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="● 8 KATEGORI AKTIF"
+            android:textColor="@color/monetra_black"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ketuk untuk detail arsip"
+            android:textColor="@color/monetra_gray_text"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Grid 2 Kolom Kategori -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategories"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="14dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@id/btnTambahKategoriBottom"
+        app:layout_constraintTop_toBottomOf="@id/statusRow" />
+
+    <!-- Tombol Bawah + TAMBAH KATEGORI -->
+    <TextView
+        android:id="@+id/btnTambahKategoriBottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_brutal_button_yellow"
+        android:gravity="center"
+        android:text="+ TAMBAH KATEGORI"
+        android:textColor="@color/monetra_black"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

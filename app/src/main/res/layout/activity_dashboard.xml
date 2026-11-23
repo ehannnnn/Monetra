@@ -608,6 +608,27 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- Tombol Tambah Kategori  -->
+            <LinearLayout
+                android:id="@+id/btnAddCategoryHome"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_brutal_button_yellow"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ TAMBAH KATEGORI"
+                    android:textColor="@color/monetra_black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <!-- SECTION: TRANSAKSI TERBARU -->
             <LinearLayout
                 android:layout_width="match_parent"
