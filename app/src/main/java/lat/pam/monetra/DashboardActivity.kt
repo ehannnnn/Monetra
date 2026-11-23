@@ -1,11 +1,13 @@
 package lat.pam.monetra
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +23,8 @@ data class TransactionItem(
     val meta: String,
     val amount: String,
     val isIncome: Boolean,
-    val iconBgColorRes: Int
+    val iconBgColorRes: Int,
+    val iconRes: Int
 )
 
 class DashboardActivity : AppCompatActivity() {
@@ -40,11 +43,11 @@ class DashboardActivity : AppCompatActivity() {
         val fabCatat = findViewById<View>(R.id.fabCatat)
 
         val sampleTransactions = listOf(
-            TransactionItem("Nasi Padang", "Makanan & Minuman • Hari ini, 12:30", "-Rp20.000", false, R.color.monetra_purple),
-            TransactionItem("Bensin Pertalite", "Transportasi • Kemarin, 08:15", "-Rp35.000", false, R.color.monetra_green),
-            TransactionItem("Uang saku bulanan", "Pemasukan • 15 Nov, 10:00", "+Rp500.000", true, R.color.monetra_green),
-            TransactionItem("Parkir motor kampus", "Transportasi • 14 Nov, 14:20", "-Rp2.000", false, R.color.monetra_blue),
-            TransactionItem("Kopi susu gula aren", "Makanan & Minuman • 13 Nov, 16:45", "-Rp18.000", false, R.color.monetra_pink)
+            TransactionItem("Nasi Padang", "Makanan & Minuman • Hari ini, 12:30", "-Rp20.000", false, R.color.monetra_purple, R.drawable.ic_cat_food),
+            TransactionItem("Bensin Pertalite", "Transportasi • Kemarin, 08:15", "-Rp35.000", false, R.color.monetra_green, R.drawable.ic_cat_fuel),
+            TransactionItem("Uang saku bulanan", "Pemasukan • 15 Nov, 10:00", "+Rp500.000", true, R.color.monetra_green, R.drawable.ic_cat_cash),
+            TransactionItem("Parkir motor kampus", "Transportasi • 14 Nov, 14:20", "-Rp2.000", false, R.color.monetra_blue, R.drawable.ic_cat_park_p),
+            TransactionItem("Kopi susu gula aren", "Makanan & Minuman • 13 Nov, 16:45", "-Rp18.000", false, R.color.monetra_pink, R.drawable.ic_cat_coffee)
         )
 
         rvTransactions.layoutManager = LinearLayoutManager(this)
@@ -52,6 +55,10 @@ class DashboardActivity : AppCompatActivity() {
 
         fabCatat.setOnClickListener {
             Toast.makeText(this, "Buka form catat transaksi", Toast.LENGTH_SHORT).show()
+        }
+
+        findViewById<View>(R.id.btnAddCategoryHome)?.setOnClickListener {
+            startActivity(Intent(this, CategoryActivity::class.java))
         }
     }
 }
@@ -61,6 +68,7 @@ class TransactionAdapter(private val items: List<TransactionItem>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val iconContainer: FrameLayout = view.findViewById(R.id.iconContainer)
+        val ivCategoryIcon: ImageView = view.findViewById(R.id.ivCategoryIcon)
         val tvTitle: TextView = view.findViewById(R.id.tvTransactionTitle)
         val tvMeta: TextView = view.findViewById(R.id.tvTransactionMeta)
         val tvAmount: TextView = view.findViewById(R.id.tvTransactionAmount)
@@ -85,6 +93,10 @@ class TransactionAdapter(private val items: List<TransactionItem>) :
 
         holder.iconContainer.backgroundTintList =
             ColorStateList.valueOf(ContextCompat.getColor(context, item.iconBgColorRes))
+
+        holder.ivCategoryIcon.setImageResource(item.iconRes)
+        holder.ivCategoryIcon.imageTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(context, R.color.monetra_white))
     }
 
     override fun getItemCount() = items.size

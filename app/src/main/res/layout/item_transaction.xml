@@ -7,12 +7,12 @@
     android:orientation="horizontal"
     android:paddingVertical="10dp">
 
-    <!-- Kotak Ikon Kategori -->
     <FrameLayout
         android:id="@+id/iconContainer"
         android:layout_width="42dp"
         android:layout_height="42dp"
-        android:background="@drawable/bg_icon_box">
+        android:background="@drawable/bg_icon_box"
+        android:backgroundTint="@color/monetra_white">
 
         <ImageView
             android:id="@+id/ivCategoryIcon"
@@ -20,7 +20,7 @@
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:src="@android:drawable/ic_menu_gallery"
-            app:tint="@color/monetra_white" />
+            app:tint="@color/monetra_black" />
     </FrameLayout>
 
     <!-- Judul & Subjudul -->

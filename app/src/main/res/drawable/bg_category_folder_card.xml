@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow hitam di kanan & bawah -->
+    <item android:left="3dp" android:top="11dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/monetra_black" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+
+    <!-- Tab folder warna di kiri atas (diwarnai via backgroundTint di Adapter) -->
+    <item
+        android:bottom="110dp"
+        android:left="10dp"
+        android:right="92dp"
+        android:top="0dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/monetra_purple" />
+            <stroke android:width="1.5dp" android:color="@color/monetra_black" />
+            <corners
+                android:topLeftRadius="8dp"
+                android:topRightRadius="8dp" />
+        </shape>
+    </item>
+
+    <!-- Body utama kartu kategori -->
+    <item
+        android:bottom="3dp"
+        android:left="0dp"
+        android:right="3dp"
+        android:top="8dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/monetra_white" />
+            <stroke android:width="2dp" android:color="@color/monetra_black" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+</layer-list>

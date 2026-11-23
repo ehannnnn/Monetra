@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_brutal_card"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:layout_margin="16dp"
+    tools:ignore="HardcodedText">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDetailTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Riwayat Kategori"
+            android:textColor="@color/monetra_black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnCloseDetail"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_pill_outline"
+            android:contentDescription="Tutup"
+            android:padding="6dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="@color/monetra_black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDetailCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0 transaksi tercatat"
+            android:textColor="@color/monetra_gray_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btnAddTxInFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_brutal_button_yellow"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="+ Tambah Transaksi"
+            android:textColor="@color/monetra_black"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- RecyclerView Riwayat Transaksi -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategoryTransactions"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="12dp"
+        android:clipToPadding="false" />
+
+    <TextView
+        android:id="@+id/btnCloseDetailBottom"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_pill_outline"
+        android:gravity="center"
+        android:text="Tutup"
+        android:textColor="@color/monetra_black"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+</LinearLayout>
