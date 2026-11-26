@@ -1,4 +1,4 @@
-package lat.pam.monetra
+package app.project.monetra
 
 import android.app.AlertDialog
 import android.content.res.ColorStateList

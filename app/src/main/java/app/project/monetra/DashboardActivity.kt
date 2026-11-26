@@ -1,4 +1,4 @@
-package lat.pam.monetra
+package app.project.monetra
 
 import android.content.Intent
 import android.content.res.ColorStateList

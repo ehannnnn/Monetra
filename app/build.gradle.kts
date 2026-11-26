@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "lat.pam.monetra"
+    namespace = "app.project.monetra"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "lat.pam.monetra"
+        applicationId = "app.project.monetra"
         minSdk = 24
         targetSdk = 37
         versionCode = 1

@@ -1,4 +1,4 @@
-package lat.pam.monetra
+package app.project.monetra
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
