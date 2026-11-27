@@ -36,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:fontFamily="@font/space_grotesk_bold"
             android:text="Catat Manual"
             android:textColor="#000000"
             android:textSize="20sp"
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_pill_outline"
+            android:fontFamily="@font/plus_jakarta_sans_semibold"
             android:paddingHorizontal="10dp"
             android:paddingVertical="4dp"
             android:text="🔴 Offline"
@@ -90,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:background="@drawable/bg_brutal_button_yellow"
+            android:fontFamily="@font/space_grotesk_bold"
             android:text="SIMPAN TRANSAKSI"
             android:textAllCaps="true"
             android:textColor="#000000"
@@ -141,6 +144,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/space_grotesk_bold"
                     android:text="TERSIMPAN DI PERANGKAT"
                     android:textColor="#000000"
                     android:textSize="12sp"
@@ -154,6 +158,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/plus_jakarta_sans_regular"
                     android:text="Data tersinkron otomatis saat online"
                     android:textColor="#666666"
                     android:textSize="11sp"
@@ -166,6 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_pill_outline"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="3dp"
                     android:text="🟢 100% Offline"
@@ -194,6 +200,7 @@
                     android:background="@drawable/bg_brutal_button_red"
                     android:drawableStart="@android:drawable/arrow_up_float"
                     android:drawableTint="#FFFFFF"
+                    android:fontFamily="@font/space_grotesk_semibold"
                     android:paddingHorizontal="12dp"
                     android:text="Pengeluaran"
                     android:textAllCaps="false"
@@ -210,6 +217,7 @@
                     android:background="@drawable/bg_brutal_button_white"
                     android:drawableStart="@android:drawable/arrow_down_float"
                     android:drawableTint="#2E7D32"
+                    android:fontFamily="@font/space_grotesk_semibold"
                     android:paddingHorizontal="12dp"
                     android:text="Pemasukan"
                     android:textAllCaps="false"
@@ -229,6 +237,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/space_grotesk_bold"
                     android:text="NOMINAL TRANSAKSI"
                     android:textColor="#000000"
                     android:textSize="12sp"
@@ -239,6 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/plus_jakarta_sans_regular"
                     android:text="Maks. Rp1 Miliar"
                     android:textColor="#777777"
                     android:textSize="12sp" />
@@ -256,6 +266,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_brutal_button_yellow"
+                    android:fontFamily="@font/space_grotesk_bold"
                     android:gravity="center"
                     android:paddingHorizontal="16dp"
                     android:text="Rp"
@@ -269,6 +280,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:hint="0"
                     android:inputType="number"
                     android:paddingHorizontal="12dp"
@@ -282,6 +294,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:background="@drawable/bg_pill_outline"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="3dp"
                     android:text="IDR"
@@ -295,11 +308,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
                 android:text=" Nominal harus lebih dari 0"
                 android:textColor="#D32F2F"
                 android:textSize="12sp" />
 
-            <!-- ================= SECTION PILIH KATEGORI (WRAPPED FOR TOGGLE) ================= -->
+            <!-- ================= SECTION PILIH KATEGORI ================= -->
             <LinearLayout
                 android:id="@+id/sectionKategori"
                 android:layout_width="match_parent"
@@ -316,6 +330,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
+                        android:fontFamily="@font/space_grotesk_bold"
                         android:text=" PILIH KATEGORI"
                         android:textColor="#000000"
                         android:textSize="12sp"
@@ -326,6 +341,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:text="Makanan &amp; Minuman"
                         android:textColor="#8A2BE2"
                         android:textSize="12sp"
@@ -340,7 +356,7 @@
                     android:columnCount="2"
                     android:rowCount="4">
 
-                    <!-- 1. Makanan & Minuman (Active Default) -->
+                    <!-- 1. Makanan & Minuman -->
                     <LinearLayout
                         android:id="@+id/catFood"
                         android:layout_width="0dp"
@@ -367,6 +383,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Makanan &amp; Minum"
                             android:textColor="@color/monetra_black"
                             android:textSize="12sp"
@@ -400,6 +417,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Transportasi"
                             android:textColor="#000000"
                             android:textSize="12sp"
@@ -433,6 +451,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Belanja"
                             android:textColor="#000000"
                             android:textSize="12sp"
@@ -466,6 +485,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Tagihan"
                             android:textColor="#000000"
                             android:textSize="12sp"
@@ -499,6 +519,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Hiburan"
                             android:textColor="#000000"
                             android:textSize="12sp"
@@ -532,6 +553,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Pendidikan"
                             android:textColor="#000000"
                             android:textSize="12sp"
@@ -565,13 +587,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Lainnya"
                             android:textColor="#000000"
                             android:textSize="12sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <!-- 8. Kategori Baru (Dashed Outline) -->
+                    <!-- 8. Kategori Baru -->
                     <LinearLayout
                         android:id="@+id/catAddNew"
                         android:layout_width="0dp"
@@ -595,6 +618,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="6dp"
+                            android:fontFamily="@font/space_grotesk_semibold"
                             android:text="Kategori Baru"
                             android:textColor="#000000"
                             android:textSize="12sp"
@@ -611,6 +635,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/space_grotesk_bold"
                 android:text=" TANGGAL TRANSAKSI"
                 android:textColor="#000000"
                 android:textSize="12sp"
@@ -640,6 +665,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    android:fontFamily="@font/space_grotesk_semibold"
                     android:text="Hari ini, 17 Nov 2026"
                     android:textColor="#000000"
                     android:textSize="14sp"
@@ -653,6 +679,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    android:fontFamily="@font/plus_jakarta_sans_regular"
                     android:text="Waktu lokal (WIB)"
                     android:textColor="#666666"
                     android:textSize="12sp"
@@ -667,6 +694,7 @@
                     android:background="@drawable/bg_pill_outline"
                     android:drawableEnd="@android:drawable/arrow_down_float"
                     android:drawableTint="#000000"
+                    android:fontFamily="@font/space_grotesk_semibold"
                     android:paddingHorizontal="12dp"
                     android:text="Ubah"
                     android:textAllCaps="false"
@@ -690,6 +718,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/space_grotesk_bold"
                     android:text="✏️ CATATAN / DESKRIPSI"
                     android:textColor="#000000"
                     android:textSize="12sp"
@@ -700,6 +729,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/plus_jakarta_sans_regular"
                     android:text="0/100"
                     android:textColor="#666666"
                     android:textSize="12sp" />
@@ -711,6 +741,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_toStartOf="@id/lblCharCount"
                     android:background="@drawable/bg_badge_bawaan"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="2dp"
                     android:text="Opsional"
@@ -724,6 +755,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_brutal_card"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
                 android:gravity="top|start"
                 android:hint="Contoh: Sarapan bubur ayam, bayar wifi..."
                 android:inputType="textMultiLine"
@@ -740,7 +772,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp">
 
-                <!-- STATE 1: Default (Belum Ada Foto) -->
+                <!-- STATE 1: Default -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layoutAttachmentDefault"
                     android:layout_width="match_parent"
@@ -762,6 +794,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
+                        android:fontFamily="@font/plus_jakarta_sans_medium"
                         android:text="Lampiran Struk Fisik:"
                         android:textColor="#666666"
                         android:textSize="13sp"
@@ -777,6 +810,7 @@
                         android:background="@drawable/bg_brutal_button_white"
                         android:drawableStart="@android:drawable/ic_menu_camera"
                         android:drawableTint="#000000"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:paddingHorizontal="12dp"
                         android:text="Foto"
                         android:textAllCaps="false"
@@ -789,7 +823,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!-- STATE 2: Preview (Sudah Ada Foto) -->
+                <!-- STATE 2: Preview -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layoutAttachmentPreview"
                     android:layout_width="match_parent"
@@ -800,7 +834,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:visibility="visible">
 
-                    <!-- Container CardView untuk membuat sudut foto jadi Rounded -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardPreviewWrapper"
                         android:layout_width="0dp"
@@ -825,7 +858,7 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Tombol Aksi Kanan (Hapus & Foto Ulang) -->
+                    <!-- Tombol Aksi Kanan -->
                     <LinearLayout
                         android:id="@+id/layoutActionButtons"
                         android:layout_width="wrap_content"
