@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Card outline -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/monetra_black"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M7,8.75h34A4.25,4.25 0,0 1,45.25 13v22A4.25,4.25 0,0 1,41 39.25H7A4.25,4.25 0,0 1,2.75 35V13A4.25,4.25 0,0 1,7 8.75z" />
+
+    <!-- Profile head -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/monetra_black"
+        android:strokeWidth="2.5"
+        android:pathData="M15,18.75a2.25,2.25 0,1 0,0 4.5a2.25,2.25 0,0 0,0 -4.5z" />
+
+    <!-- Profile body -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/monetra_black"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M8.75,33c0,-3.93 2.77,-6.25 6.25,-6.25s6.25,2.32 6.25,6.25" />
+
+    <!-- Information lines -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/monetra_black"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M26,18.75h12M26,23.75h12M26,28.75h8" />
+
+</vector>

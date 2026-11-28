@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFBF7"
+    android:padding="20dp">
+
+    <!-- ================= TOP HEADER BAR ================= -->
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_brutal_button_white"
+        android:contentDescription="Settings"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/monetra_black" />
+
+    <TextView
+        android:id="@+id/tvHeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrasi"
+        android:textColor="@color/monetra_black"
+        android:textSize="20sp"
+        android:fontFamily="@font/space_grotesk_semibold"
+        app:layout_constraintBottom_toBottomOf="@id/btnSettings"
+        app:layout_constraintEnd_toStartOf="@id/btnAnalytics"
+        app:layout_constraintStart_toEndOf="@id/btnSettings"
+        app:layout_constraintTop_toTopOf="@id/btnSettings" />
+
+    <ImageButton
+        android:id="@+id/btnAnalytics"
+        android:layout_width="40dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_brutal_button_white"
+        android:contentDescription="Analytics"
+        android:src="@drawable/ic_arrow_up_right"
+        app:layout_constraintEnd_toStartOf="@id/btnSearch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/monetra_black" />
+
+    <ImageButton
+        android:id="@+id/btnSearch"
+        android:layout_width="40dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_brutal_button_white"
+        android:contentDescription="Search"
+        android:src="@drawable/ic_search"
+        app:layout_constraintEnd_toStartOf="@id/btnProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/monetra_black" />
+
+    <ImageButton
+        android:id="@+id/btnProfile"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_brutal_card"
+        android:backgroundTint="#6B5300"
+        android:contentDescription="Profile"
+        android:src="@drawable/ic_user_outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/monetra_white" />
+
+    <!-- ================= BRANDING LOGO & BADGE VERSION ================= -->
+    <LinearLayout
+        android:id="@+id/layoutLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSettings">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_brutal_button_yellow"
+            android:padding="6dp"
+            android:src="@drawable/ic_wallet_monetra"
+            app:tint="@color/monetra_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Monetra"
+            android:textColor="@color/monetra_black"
+            android:textSize="26sp"
+            android:fontFamily="@font/space_grotesk_bold" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_brutal_button_white"
+            android:backgroundTint="@color/monetra_green" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvVersionBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_brutal_button_white"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        android:text="⚡ v1.0"
+        android:textColor="@color/monetra_black"
+        android:textSize="12sp"
+        android:fontFamily="@font/space_grotesk_semibold"
+        app:layout_constraintBottom_toBottomOf="@id/layoutLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layoutLogo" />
+
+    <!-- ================= HEADLINE TEKS & HIGHLIGHT ================= -->
+    <TextView
+        android:id="@+id/tvTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Catat uang,"
+        android:textColor="@color/monetra_black"
+        android:textSize="28sp"
+        android:fontFamily="@font/space_grotesk_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutLogo" />
+
+    <TextView
+        android:id="@+id/tvTitleHighlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/bg_brutal_button_yellow"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="2dp"
+        android:text="cukup ngobrol."
+        android:textColor="@color/monetra_black"
+        android:textSize="28sp"
+        android:fontFamily="@font/space_grotesk_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle1" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ketik atau ucapkan transaksimu. Monetra yang mencatat rapi dalam hitungan detik."
+        android:textColor="@color/monetra_gray_text"
+        android:textSize="13sp"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleHighlight" />
+
+    <!-- ================= FORM REGISTRASI CONTAINER ================= -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_brutal_card"
+        android:padding="14dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+        <!-- BADGE MULAI KILAT -->
+        <TextView
+            android:id="@+id/badgeMulaiKilat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_brutal_button_white"
+            android:backgroundTint="@color/monetra_green"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            android:text="MULAI KILAT"
+            android:textColor="@color/monetra_black"
+            android:textSize="10sp"
+            android:fontFamily="@font/space_grotesk_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Nama Panggilan -->
+        <TextView
+            android:id="@+id/lblNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Panggilan"
+            android:textColor="@color/monetra_black"
+            android:fontFamily="@font/space_grotesk_semibold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="Wajib diisi"
+            android:textColor="@color/monetra_gray_text"
+            android:textSize="11sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            app:layout_constraintBottom_toBottomOf="@id/lblNama"
+            app:layout_constraintEnd_toStartOf="@id/badgeMulaiKilat" />
+
+        <EditText
+            android:id="@+id/etNama"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_brutal_card"
+            android:drawableEnd="@drawable/ic_id_card"
+            android:hint="Nama panggilan kamu"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="12dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            app:layout_constraintTop_toBottomOf="@id/lblNama" />
+
+        <!-- PIN & Konfirmasi PIN -->
+        <TextView
+            android:id="@+id/lblPin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="PIN (6 digit)"
+            android:textColor="@color/monetra_black"
+            android:fontFamily="@font/space_grotesk_semibold"
+            app:layout_constraintEnd_toStartOf="@id/lblConfirmPin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etNama" />
+
+        <TextView
+            android:id="@+id/lblConfirmPin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Konfirmasi PIN"
+            android:textColor="@color/monetra_black"
+            android:fontFamily="@font/space_grotesk_semibold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/lblPin"
+            app:layout_constraintTop_toTopOf="@id/lblPin" />
+
+        <EditText
+            android:id="@+id/etPin"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_brutal_card"
+            android:drawableEnd="@drawable/ic_eye"
+            android:hint="••••••"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:paddingHorizontal="12dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            app:layout_constraintEnd_toStartOf="@id/etConfirmPin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblPin" />
+
+        <EditText
+            android:id="@+id/etConfirmPin"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_brutal_card"
+            android:hint="••••••"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:paddingHorizontal="12dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/etPin"
+            app:layout_constraintTop_toTopOf="@id/etPin" />
+
+        <!-- Saldo Awal Dompet -->
+        <TextView
+            android:id="@+id/lblSaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Saldo Awal Dompet"
+            android:textColor="@color/monetra_black"
+            android:fontFamily="@font/space_grotesk_semibold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etPin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_brutal_card"
+            android:backgroundTint="#EEEEEE"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="Opsional"
+            android:textColor="@color/monetra_gray_text"
+            android:textSize="10sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            app:layout_constraintBottom_toBottomOf="@id/lblSaldo"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutSaldoInput"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_brutal_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/lblSaldo">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_brutal_button_yellow"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:text="Rp"
+                android:textColor="@color/monetra_black"
+                android:textSize="14sp"
+                android:fontFamily="@font/space_grotesk_bold" />
+
+            <EditText
+                android:id="@+id/etSaldo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="0 atau cth: 500.000"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                android:textSize="13sp"
+                android:fontFamily="@font/plus_jakarta_sans_regular" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ================= CARD INFO AI GEMINI ================= -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardAiInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_brutal_card"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/cardForm">
+
+        <View
+            android:id="@+id/barPurpleAccent"
+            android:layout_width="5dp"
+            android:layout_height="0dp"
+            android:background="@color/monetra_purple"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iconAi"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_brutal_card"
+            android:backgroundTint="#EAE6FF"
+            android:padding="5dp"
+            android:src="@drawable/ic_bolt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barPurpleAccent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/monetra_purple" />
+
+        <TextView
+            android:id="@+id/tvAiTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Kecerdasan Buatan Terintegrasi"
+            android:textColor="@color/monetra_black"
+            android:textSize="12sp"
+            android:fontFamily="@font/space_grotesk_semibold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iconAi"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAiSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:text="Pemahaman percakapan memakai AI (Google Gemini). Kalimat transaksi dianalisis privat dan bisa dimatikan sewaktu-waktu di menu Profil."
+            android:textColor="@color/monetra_gray_text"
+            android:textSize="10sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iconAi"
+            app:layout_constraintTop_toBottomOf="@id/tvAiTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ================= TOMBOL SUBMIT REGISTRASI ================= -->
+    <Button
+        android:id="@+id/btnStartAdventure"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_brutal_card"
+        android:backgroundTint="@color/monetra_yellow"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:paddingHorizontal="16dp"
+        android:text="Mulai Petualangan Finansial"
+        android:textAllCaps="false"
+        android:textColor="@color/monetra_black"
+        android:textSize="14sp"
+        android:fontFamily="@font/space_grotesk_bold"
+        app:layout_constraintTop_toBottomOf="@id/cardAiInfo"
+        app:tint="@color/monetra_black" />
+
+    <!-- Footer Link Masuk Akun -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStartAdventure">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sudah pernah mendaftar? "
+            android:textColor="@color/monetra_gray_text"
+            android:textSize="12sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular" />
+
+        <TextView
+            android:id="@+id/tvLoginLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masuk Akun"
+            android:textColor="@color/monetra_black"
+            android:textSize="12sp"
+            android:fontFamily="@font/space_grotesk_semibold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
