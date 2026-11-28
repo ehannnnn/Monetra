@@ -667,6 +667,20 @@
                 android:layout_marginTop="12dp"
                 android:nestedScrollingEnabled="false" />
 
+            <TextView
+                android:id="@+id/tvEmptyTransactions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_brutal_card"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:gravity="center"
+                android:padding="18dp"
+                android:text="Belum ada transaksi. Ketuk + CATAT untuk mulai."
+                android:textColor="@color/monetra_gray_text"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

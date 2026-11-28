@@ -296,6 +296,21 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <!-- Use Transcript Button -->
+            <TextView
+                android:id="@+id/btnUseTranscript"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_brutal_button_yellow"
+                android:fontFamily="@font/space_grotesk_bold"
+                android:gravity="center"
+                android:text="GUNAKAN TEKS →"
+                android:textColor="@color/monetra_black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
             <!-- Cancel Button -->
             <TextView
                 android:id="@+id/btnCancelVoice"
@@ -319,7 +334,8 @@
                 android:background="@drawable/bg_brutal_card"
                 android:fontFamily="@font/space_grotesk_medium"
                 android:gravity="center"
-                android:text="▤  Atau ketik saja manual"
+                android:drawable="@drawable/ic_keyboard"
+                android:text="Atau ketik saja manual"
                 android:textColor="@color/monetra_black"
                 android:textSize="13sp" />
 

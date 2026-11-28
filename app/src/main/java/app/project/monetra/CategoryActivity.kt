@@ -22,6 +22,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import app.project.monetra.data.CategoryCatalog
+import app.project.monetra.data.FormatUtils
+import app.project.monetra.data.TransactionEntity
+import app.project.monetra.data.TransactionRepository
 
 data class CategoryModel(
     val name: String,
@@ -33,7 +37,7 @@ data class CategoryModel(
 )
 
 data class CategoryTransaction(
-    val id: String,
+    val id: Long,
     val title: String,
     val meta: String,
     val amount: String,
@@ -44,35 +48,22 @@ data class CategoryTransaction(
 class CategoryActivity : AppCompatActivity() {
 
     private val categories = mutableListOf(
-        CategoryModel("Makanan & Minuman", 34, R.drawable.ic_cat_food, R.color.monetra_purple, false, false),
-        CategoryModel("Transportasi", 18, R.drawable.ic_cat_fuel, R.color.monetra_green, false, false),
-        CategoryModel("Belanja", 15, R.drawable.ic_cat_bag, R.color.monetra_yellow, false, false),
-        CategoryModel("Tagihan", 6, R.drawable.ic_cat_bill, R.color.monetra_red, false, false),
-        CategoryModel("Hiburan", 9, R.drawable.ic_cat_gamepad, R.color.monetra_purple, false, false),
-        CategoryModel("Pendidikan", 4, R.drawable.ic_cat_grad, R.color.monetra_green, false, false),
-        CategoryModel("Lainnya", 7, R.drawable.ic_cat_more, R.color.monetra_gray_text, false, false),
-        CategoryModel("Skincare", 12, R.drawable.ic_cat_sparkle, R.color.monetra_yellow, true, false),
-        CategoryModel("Gaji Bulanan", 5, R.drawable.ic_cat_cash, R.color.monetra_green, false, true),
-        CategoryModel("Freelance", 8, R.drawable.ic_cat_sparkle, R.color.monetra_blue, true, true)
-    )
-
-    private val categoryTransactions = mutableMapOf<String, MutableList<CategoryTransaction>>(
-        "Makanan & Minuman" to mutableListOf(
-            CategoryTransaction("1", "Nasi Padang", "Hari ini, 12:30", "-Rp20.000", false, R.drawable.ic_cat_food),
-            CategoryTransaction("2", "Kopi Susu", "Kemarin, 16:45", "-Rp18.000", false, R.drawable.ic_cat_coffee)
-        ),
-        "Transportasi" to mutableListOf(
-            CategoryTransaction("3", "Bensin Pertalite", "Kemarin, 08:15", "-Rp35.000", false, R.drawable.ic_cat_fuel)
-        ),
-        "Skincare" to mutableListOf(
-            CategoryTransaction("4", "Serum Wajah", "2 hari lalu", "-Rp75.000", false, R.drawable.ic_cat_sparkle)
-        )
+        CategoryModel("Makanan & Minuman", 0, R.drawable.ic_cat_food, R.color.monetra_purple, false, false),
+        CategoryModel("Transportasi", 0, R.drawable.ic_cat_fuel, R.color.monetra_green, false, false),
+        CategoryModel("Belanja", 0, R.drawable.ic_cat_bag, R.color.monetra_yellow, false, false),
+        CategoryModel("Tagihan", 0, R.drawable.ic_cat_bill, R.color.monetra_red, false, false),
+        CategoryModel("Hiburan", 0, R.drawable.ic_cat_gamepad, R.color.monetra_purple, false, false),
+        CategoryModel("Pendidikan", 0, R.drawable.ic_cat_grad, R.color.monetra_green, false, false),
+        CategoryModel("Lainnya", 0, R.drawable.ic_cat_more, R.color.monetra_gray_text, false, false),
+        CategoryModel("Gaji Bulanan", 0, R.drawable.ic_cat_cash, R.color.monetra_green, false, true),
+        CategoryModel("Freelance", 0, R.drawable.ic_cat_sparkle, R.color.monetra_blue, false, true)
     )
 
     private var showingIncome = false
     private lateinit var adapter: CategoryAdapter
     private lateinit var rvCategories: RecyclerView
     private lateinit var tvActiveCount: TextView
+    private lateinit var repository: TransactionRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +75,7 @@ class CategoryActivity : AppCompatActivity() {
             insets
         }
 
+        repository = TransactionRepository(this)
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener { finish() }
 
         rvCategories = findViewById(R.id.rvCategories)
@@ -116,6 +108,20 @@ class CategoryActivity : AppCompatActivity() {
         }
 
         updateList()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshCounts()
+    }
+
+    private fun refreshCounts() {
+        repository.loadAll { transactions ->
+            categories.forEach { category ->
+                category.txCount = transactions.count { it.category == category.name }
+            }
+            updateList()
+        }
     }
 
     private fun updateList() {
@@ -229,6 +235,10 @@ class CategoryActivity : AppCompatActivity() {
                 Toast.makeText(this, "Nama kategori tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            if (categories.any { it.name.equals(name, ignoreCase = true) }) {
+                Toast.makeText(this, "Kategori '$name' sudah ada", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val newCat = CategoryModel(
                 name = name,
                 txCount = 0,
@@ -254,11 +264,10 @@ class CategoryActivity : AppCompatActivity() {
             .create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        dialogView.findViewById<TextView>(R.id.tvDelCatName).text = "Hapus '${cat.name}' beserta riwayatnya?"
+        dialogView.findViewById<TextView>(R.id.tvDelCatName).text = "Hapus '${cat.name}' dari daftar?"
         dialogView.findViewById<TextView>(R.id.btnCancelDeleteCat).setOnClickListener { dialog.dismiss() }
         dialogView.findViewById<TextView>(R.id.btnConfirmDeleteCat).setOnClickListener {
             categories.remove(cat)
-            categoryTransactions.remove(cat.name)
             updateList()
             Toast.makeText(this, "Kategori '${cat.name}' dihapus", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
@@ -279,26 +288,22 @@ class CategoryActivity : AppCompatActivity() {
         val rvTx = dialogView.findViewById<RecyclerView>(R.id.rvCategoryTransactions)
         rvTx.layoutManager = LinearLayoutManager(this)
 
-        val txList = categoryTransactions.getOrPut(cat.name) {
-            mutableListOf()
-        }
-
         fun refreshDetail() {
-            tvCount.text = "${txList.size} transaksi tercatat"
-            cat.txCount = txList.size
-            updateList()
-            rvTx.adapter = CategoryTransactionAdapter(txList) { tx ->
-                showDeleteTransactionDialog(tx, txList) {
-                    refreshDetail()
+            repository.loadByCategory(cat.name) { transactions ->
+                tvCount.text = "${transactions.size} transaksi tercatat"
+                cat.txCount = transactions.size
+                updateList()
+                rvTx.adapter = CategoryTransactionAdapter(
+                    transactions.map { it.toCategoryTransaction() }
+                ) { tx ->
+                    showDeleteTransactionDialog(tx) { refreshDetail() }
                 }
             }
         }
         refreshDetail()
 
         dialogView.findViewById<TextView>(R.id.btnAddTxInFolder).setOnClickListener {
-            showAddTransactionDialog(cat, txList) {
-                refreshDetail()
-            }
+            showAddTransactionDialog(cat) { refreshDetail() }
         }
 
         dialogView.findViewById<ImageView>(R.id.btnCloseDetail).setOnClickListener { dialog.dismiss() }
@@ -307,7 +312,7 @@ class CategoryActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showAddTransactionDialog(cat: CategoryModel, txList: MutableList<CategoryTransaction>, onAdded: () -> Unit) {
+    private fun showAddTransactionDialog(cat: CategoryModel, onAdded: () -> Unit) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_transaction, null)
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
@@ -332,28 +337,32 @@ class CategoryActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val rawAmount = amountStr.toLongOrNull() ?: 0L
-            val prefix = if (cat.isIncome) "+Rp" else "-Rp"
-            val formattedAmount = "$prefix%,d".format(rawAmount).replace(',', '.')
+            val rawAmount = amountStr.filter { it.isDigit() }.toLongOrNull() ?: 0L
+            if (rawAmount <= 0L) {
+                Toast.makeText(this, "Nominal harus lebih dari 0", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-            val newTx = CategoryTransaction(
-                id = System.currentTimeMillis().toString(),
-                title = title,
-                meta = "${cat.name} • Baru saja",
-                amount = formattedAmount,
-                isIncome = cat.isIncome,
-                iconRes = cat.iconRes
-            )
-            txList.add(newTx)
-            onAdded()
-            Toast.makeText(this, "Transaksi '$title' ditambahkan", Toast.LENGTH_SHORT).show()
+            repository.insert(
+                TransactionEntity(
+                    type = if (cat.isIncome) TransactionEntity.TYPE_INCOME else TransactionEntity.TYPE_EXPENSE,
+                    amount = rawAmount,
+                    category = cat.name,
+                    description = title,
+                    dateMillis = System.currentTimeMillis(),
+                    source = "MANUAL"
+                )
+            ) {
+                onAdded()
+                Toast.makeText(this, "Transaksi '$title' ditambahkan", Toast.LENGTH_SHORT).show()
+            }
             dialog.dismiss()
         }
 
         dialog.show()
     }
 
-    private fun showDeleteTransactionDialog(tx: CategoryTransaction, txList: MutableList<CategoryTransaction>, onDeleted: () -> Unit) {
+    private fun showDeleteTransactionDialog(tx: CategoryTransaction, onDeleted: () -> Unit) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_delete_transaction, null)
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
@@ -367,13 +376,26 @@ class CategoryActivity : AppCompatActivity() {
 
         dialogView.findViewById<TextView>(R.id.btnCancelDeleteTx).setOnClickListener { dialog.dismiss() }
         dialogView.findViewById<TextView>(R.id.btnConfirmDeleteTx).setOnClickListener {
-            txList.remove(tx)
-            onDeleted()
-            Toast.makeText(this, "Transaksi '${tx.title}' berhasil dihapus", Toast.LENGTH_SHORT).show()
+            repository.deleteById(tx.id) {
+                onDeleted()
+                Toast.makeText(this, "Transaksi '${tx.title}' berhasil dihapus", Toast.LENGTH_SHORT).show()
+            }
             dialog.dismiss()
         }
 
         dialog.show()
+    }
+
+    private fun TransactionEntity.toCategoryTransaction(): CategoryTransaction {
+        val income = type == TransactionEntity.TYPE_INCOME
+        return CategoryTransaction(
+            id = id,
+            title = description,
+            meta = "${category} • ${FormatUtils.relativeDate(dateMillis)}",
+            amount = FormatUtils.signedRupiah(amount, income),
+            isIncome = income,
+            iconRes = CategoryCatalog.iconFor(category)
+        )
     }
 }
 

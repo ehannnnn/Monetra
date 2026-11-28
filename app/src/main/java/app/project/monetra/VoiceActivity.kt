@@ -38,6 +38,8 @@ class VoiceActivity : AppCompatActivity() {
     private lateinit var tvRecordingTimer: TextView
 
     private lateinit var btnCancelVoice: TextView
+    private lateinit var btnUseTranscript: TextView
+    private var latestTranscript: String = ""
 
     private val timerHandler = Handler(Looper.getMainLooper())
     private var recordingStartTime = 0L
@@ -93,9 +95,33 @@ class VoiceActivity : AppCompatActivity() {
         tvRecordingTimer = findViewById(R.id.tvRecordingTimer)
 
         btnCancelVoice = findViewById(R.id.btnCancelVoice)
+        btnUseTranscript = findViewById(R.id.btnUseTranscript)
 
         btnCancelVoice.setOnClickListener {
             cancelListening()
+            setResult(RESULT_CANCELED)
+            finish()
+        }
+
+        btnUseTranscript.setOnClickListener {
+            val transcript = latestTranscript.trim()
+            if (transcript.isBlank()) {
+                Toast.makeText(this, "Belum ada teks yang dikenali", Toast.LENGTH_SHORT).show()
+            } else {
+                setResult(
+                    RESULT_OK,
+                    Intent().putExtra(EXTRA_TRANSCRIPT, transcript)
+                )
+                finish()
+            }
+        }
+
+        findViewById<TextView>(R.id.btnManualInput).setOnClickListener {
+            setResult(
+                RESULT_CANCELED,
+                Intent().putExtra(EXTRA_OPEN_MANUAL, true)
+            )
+            finish()
         }
 
         // Mengatur SpeechRecognizer
@@ -225,7 +251,9 @@ class VoiceActivity : AppCompatActivity() {
                     )
 
                     if (!matches.isNullOrEmpty()) {
-                        tvTranscript.text = matches[0]
+                        latestTranscript = matches[0]
+                        tvTranscript.text = latestTranscript
+                        btnUseTranscript.visibility = android.view.View.VISIBLE
                     }
 
                     tvListeningStatus.text =
@@ -258,6 +286,8 @@ class VoiceActivity : AppCompatActivity() {
             setupSpeechRecognizer()
         }
 
+        latestTranscript = ""
+        btnUseTranscript.visibility = android.view.View.GONE
         tvTranscript.text = "Silakan mulai berbicara..."
         speechRecognizer?.startListening(recognizerIntent)
     }
@@ -283,6 +313,8 @@ class VoiceActivity : AppCompatActivity() {
         tvRecordingTimer.text = "00:00"
 
         // Menghapus transkripsi
+        latestTranscript = ""
+        btnUseTranscript.visibility = android.view.View.GONE
         tvTranscript.text = "Silakan mulai berbicara..."
 
         // Mengembalikan status
@@ -303,5 +335,10 @@ class VoiceActivity : AppCompatActivity() {
         speechRecognizer = null
 
         super.onDestroy()
+    }
+
+    companion object {
+        const val EXTRA_TRANSCRIPT = "extra_transcript"
+        const val EXTRA_OPEN_MANUAL = "extra_open_manual"
     }
 }

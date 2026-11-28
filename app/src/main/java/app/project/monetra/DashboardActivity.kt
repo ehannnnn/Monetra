@@ -17,6 +17,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import app.project.monetra.data.CategoryCatalog
+import app.project.monetra.data.FormatUtils
+import app.project.monetra.data.TransactionEntity
+import app.project.monetra.data.TransactionRepository
 
 data class TransactionItem(
     val title: String,
@@ -29,6 +33,13 @@ data class TransactionItem(
 
 class DashboardActivity : AppCompatActivity() {
 
+    private lateinit var repository: TransactionRepository
+    private lateinit var rvTransactions: RecyclerView
+    private lateinit var tvEmptyTransactions: TextView
+    private lateinit var tvTotalBalance: TextView
+    private lateinit var tvTotalIncome: TextView
+    private lateinit var tvTotalExpense: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,27 +50,89 @@ class DashboardActivity : AppCompatActivity() {
             insets
         }
 
-        val rvTransactions = findViewById<RecyclerView>(R.id.rvRecentTransactions)
-        val fabCatat = findViewById<View>(R.id.fabCatat)
-
-        val sampleTransactions = listOf(
-            TransactionItem("Nasi Padang", "Makanan & Minuman • Hari ini, 12:30", "-Rp20.000", false, R.color.monetra_purple, R.drawable.ic_cat_food),
-            TransactionItem("Bensin Pertalite", "Transportasi • Kemarin, 08:15", "-Rp35.000", false, R.color.monetra_green, R.drawable.ic_cat_fuel),
-            TransactionItem("Uang saku bulanan", "Pemasukan • 15 Nov, 10:00", "+Rp500.000", true, R.color.monetra_green, R.drawable.ic_cat_cash),
-            TransactionItem("Parkir motor kampus", "Transportasi • 14 Nov, 14:20", "-Rp2.000", false, R.color.monetra_blue, R.drawable.ic_cat_park_p),
-            TransactionItem("Kopi susu gula aren", "Makanan & Minuman • 13 Nov, 16:45", "-Rp18.000", false, R.color.monetra_pink, R.drawable.ic_cat_coffee)
-        )
+        repository = TransactionRepository(this)
+        rvTransactions = findViewById(R.id.rvRecentTransactions)
+        tvEmptyTransactions = findViewById(R.id.tvEmptyTransactions)
+        tvTotalBalance = findViewById(R.id.tvTotalBalance)
+        tvTotalIncome = findViewById(R.id.tvTotalIncome)
+        tvTotalExpense = findViewById(R.id.tvTotalExpense)
 
         rvTransactions.layoutManager = LinearLayoutManager(this)
-        rvTransactions.adapter = TransactionAdapter(sampleTransactions)
 
-        fabCatat.setOnClickListener {
-            Toast.makeText(this, "Buka form catat transaksi", Toast.LENGTH_SHORT).show()
+        findViewById<View>(R.id.fabCatat).setOnClickListener { openChat() }
+        findViewById<View>(R.id.navChat).setOnClickListener { openChat() }
+        findViewById<View>(R.id.navStatistik).setOnClickListener {
+            Toast.makeText(this, "Statistik segera hadir", Toast.LENGTH_SHORT).show()
+        }
+        findViewById<View>(R.id.navProfil).setOnClickListener {
+            Toast.makeText(this, "Profil segera hadir", Toast.LENGTH_SHORT).show()
+        }
+        findViewById<View>(R.id.btnSeeAllTransactions).setOnClickListener {
+            Toast.makeText(this, "Riwayat lengkap segera hadir", Toast.LENGTH_SHORT).show()
+        }
+        findViewById<View>(R.id.btnMonthFilter).setOnClickListener {
+            Toast.makeText(this, "Filter bulan segera hadir", Toast.LENGTH_SHORT).show()
+        }
+        findViewById<View>(R.id.btnNotification).setOnClickListener {
+            Toast.makeText(this, "Belum ada notifikasi baru", Toast.LENGTH_SHORT).show()
+        }
+        findViewById<View>(R.id.btnProfileAvatar).setOnClickListener {
+            Toast.makeText(this, "Profil segera hadir", Toast.LENGTH_SHORT).show()
         }
 
         findViewById<View>(R.id.btnAddCategoryHome)?.setOnClickListener {
             startActivity(Intent(this, CategoryActivity::class.java))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadTransactions()
+    }
+
+    private fun loadTransactions() {
+        repository.loadAll { transactions ->
+            updateSummary(transactions)
+            renderRecent(transactions.take(5))
+        }
+    }
+
+    private fun updateSummary(transactions: List<TransactionEntity>) {
+        val income = transactions
+            .filter { it.type == TransactionEntity.TYPE_INCOME }
+            .sumOf { it.amount }
+        val expense = transactions
+            .filter { it.type == TransactionEntity.TYPE_EXPENSE }
+            .sumOf { it.amount }
+
+        tvTotalBalance.text = FormatUtils.rupiah(income - expense)
+        tvTotalIncome.text = FormatUtils.rupiah(income)
+        tvTotalExpense.text = FormatUtils.rupiah(expense)
+    }
+
+    private fun renderRecent(transactions: List<TransactionEntity>) {
+        val items = transactions.map { transaction ->
+            val isIncome = transaction.type == TransactionEntity.TYPE_INCOME
+            TransactionItem(
+                title = transaction.description,
+                meta = "${transaction.category} • ${FormatUtils.relativeDate(transaction.dateMillis)}",
+                amount = FormatUtils.signedRupiah(transaction.amount, isIncome),
+                isIncome = isIncome,
+                iconBgColorRes = CategoryCatalog.colorFor(transaction.category),
+                iconRes = CategoryCatalog.iconFor(transaction.category)
+            )
+        }
+
+        rvTransactions.adapter = TransactionAdapter(items)
+        tvEmptyTransactions.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
+    }
+
+    private fun openChat() {
+        startActivity(
+            Intent(this, ChatActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            }
+        )
     }
 }
 
