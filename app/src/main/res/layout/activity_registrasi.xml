@@ -10,8 +10,8 @@
     <!-- ================= TOP HEADER BAR ================= -->
     <ImageButton
         android:id="@+id/btnSettings"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@drawable/bg_brutal_button_white"
         android:contentDescription="Settings"
         android:src="@drawable/ic_settings"
@@ -28,26 +28,15 @@
         android:textSize="20sp"
         android:fontFamily="@font/space_grotesk_semibold"
         app:layout_constraintBottom_toBottomOf="@id/btnSettings"
-        app:layout_constraintEnd_toStartOf="@id/btnAnalytics"
+        app:layout_constraintEnd_toStartOf="@id/btnSearch"
         app:layout_constraintStart_toEndOf="@id/btnSettings"
         app:layout_constraintTop_toTopOf="@id/btnSettings" />
 
-    <ImageButton
-        android:id="@+id/btnAnalytics"
-        android:layout_width="40dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/bg_brutal_button_white"
-        android:contentDescription="Analytics"
-        android:src="@drawable/ic_arrow_up_right"
-        app:layout_constraintEnd_toStartOf="@id/btnSearch"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/monetra_black" />
 
     <ImageButton
         android:id="@+id/btnSearch"
-        android:layout_width="40dp"
-        android:layout_height="44dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/bg_brutal_button_white"
         android:contentDescription="Search"
@@ -58,10 +47,9 @@
 
     <ImageButton
         android:id="@+id/btnProfile"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:background="@drawable/bg_brutal_card"
-        android:backgroundTint="#6B5300"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_brutal_button_brown"
         android:contentDescription="Profile"
         android:src="@drawable/ic_user_outline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,8 +163,7 @@
             android:id="@+id/badgeMulaiKilat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_brutal_button_white"
-            android:backgroundTint="@color/monetra_green"
+            android:background="@drawable/bg_pill_green"
             android:paddingHorizontal="10dp"
             android:paddingVertical="3dp"
             android:text="MULAI KILAT"
@@ -211,7 +198,7 @@
         <EditText
             android:id="@+id/etNama"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/bg_brutal_card"
             android:drawableEnd="@drawable/ic_id_card"
@@ -250,7 +237,7 @@
         <EditText
             android:id="@+id/etPin"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/bg_brutal_card"
             android:drawableEnd="@drawable/ic_eye"
@@ -267,7 +254,7 @@
         <EditText
             android:id="@+id/etConfirmPin"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/bg_brutal_card"
             android:hint="••••••"
@@ -275,6 +262,7 @@
             android:maxLength="6"
             android:paddingHorizontal="12dp"
             android:textSize="13sp"
+            android:drawableEnd="@drawable/ic_eye"
             android:fontFamily="@font/plus_jakarta_sans_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/etPin"
@@ -330,7 +318,7 @@
             <EditText
                 android:id="@+id/etSaldo"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="0 atau cth: 500.000"
@@ -410,8 +398,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/bg_brutal_card"
-        android:backgroundTint="@color/monetra_yellow"
+        android:background="@drawable/bg_brutal_button_yellow"
         android:drawableEnd="@drawable/ic_arrow_right"
         android:paddingHorizontal="16dp"
         android:text="Mulai Petualangan Finansial"
