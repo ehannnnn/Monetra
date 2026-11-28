@@ -88,8 +88,7 @@
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:layout_marginStart="6dp"
-            android:background="@drawable/bg_brutal_button_white"
-            android:backgroundTint="@color/monetra_green" />
+            android:background="@drawable/bg_pill_green" />
     </LinearLayout>
 
     <TextView
@@ -393,7 +392,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- ================= TOMBOL SUBMIT REGISTRASI ================= -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnStartAdventure"
         android:layout_width="match_parent"
         android:layout_height="50dp"

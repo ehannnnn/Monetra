@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFBF7">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:padding="20dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnSettings"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:contentDescription="Settings"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/monetra_black" />
+
+                <TextView
+                    android:id="@+id/tvHeaderTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Login"
+                    android:textColor="@color/monetra_black"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/space_grotesk_semibold" />
+
+                <ImageButton
+                    android:id="@+id/btnSearch"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:contentDescription="Search"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/monetra_black" />
+
+                <ImageButton
+                    android:id="@+id/btnProfile"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_brutal_button_brown"
+                    android:contentDescription="Profile"
+                    android:src="@drawable/ic_user_outline"
+                    app:tint="@color/monetra_white" />
+
+            </LinearLayout>
+
+            <!-- BRANDING -->
+            <LinearLayout
+                android:id="@+id/layoutLogoPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_brutal_button_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/bg_brutal_button_yellow"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_wallet_monetra"
+                    app:tint="@color/monetra_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="Monetra"
+                    android:textColor="@color/monetra_black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/space_grotesk_bold" />
+
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_pill_green" />
+
+            </LinearLayout>
+
+            <!-- GREETING -->
+            <TextView
+                android:id="@+id/tvGreetingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Halo lagi!"
+                android:textColor="@color/monetra_black"
+                android:textSize="26sp"
+                android:fontFamily="@font/space_grotesk_bold" />
+
+            <TextView
+                android:id="@+id/tvGreetingSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="Masukkan PIN untuk membuka Monetra"
+                android:textColor="@color/monetra_gray_text"
+                android:textSize="13sp"
+                android:fontFamily="@font/plus_jakarta_sans_regular" />
+
+            <!-- PIN INDICATORS -->
+            <LinearLayout
+                android:id="@+id/layoutPinDots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:id="@+id/dot1"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="5dp">
+
+                    <View
+                        android:id="@+id/pinDot1"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_pin_dot_filled"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/dot2"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="5dp">
+
+                    <View
+                        android:id="@+id/pinDot2"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_pin_dot_filled"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/dot3"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="5dp">
+
+                    <View
+                        android:id="@+id/pinDot3"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_pin_dot_filled"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/dot4"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="5dp">
+
+                    <View
+                        android:id="@+id/pinDot4"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_pin_dot_filled"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/dot5"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="5dp">
+
+                    <View
+                        android:id="@+id/pinDot5"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_pin_dot_filled"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/dot6"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_brutal_button_white"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="5dp">
+
+                    <View
+                        android:id="@+id/pinDot6"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_pin_dot_filled"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <!-- PIN ERROR -->
+            <LinearLayout
+                android:id="@+id/layoutPinError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_brutal_card"
+                android:backgroundTint="#FFD1D1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="8dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/bg_brutal_button_brown"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_warning"
+                    app:tint="@color/monetra_white" />
+
+                <TextView
+                    android:id="@+id/tvErrorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="PIN salah. Sisa percobaan: 2"
+                    android:textColor="@color/monetra_black"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold" />
+
+            </LinearLayout>
+
+            <!-- NUMERIC KEYPAD -->
+            <LinearLayout
+                android:id="@+id/layoutKeypad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
+
+                <!-- ROW 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="1"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="2"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="3"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                </LinearLayout>
+
+                <!-- ROW 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="4"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="5"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="6"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                </LinearLayout>
+
+                <!-- ROW 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey7"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="7"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="8"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey9"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="9"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                </LinearLayout>
+
+                <!-- ROW 4 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnKeyFingerprint"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:contentDescription="Fingerprint Login"
+                        android:src="@drawable/ic_fingerprint"
+                        app:tint="@color/monetra_black" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnKey0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:backgroundTint="@null"
+                        android:text="0"
+                        android:textColor="@color/monetra_black"
+                        android:textSize="21sp"
+                        android:fontFamily="@font/space_grotesk_semibold" />
+
+                    <ImageButton
+                        android:id="@+id/btnKeyBackspace"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_brutal_button_white_selector"
+                        android:contentDescription="Hapus Digit"
+                        android:src="@drawable/ic_backspace"
+                        app:tint="@color/monetra_black" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- UNLOCK BUTTON -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUnlock"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_brutal_button_yellow"
+                android:backgroundTint="@null"
+                android:drawableStart="@drawable/ic_unlock"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="BUKA MONETRA"
+                android:textAllCaps="false"
+                android:textColor="@color/monetra_black"
+                android:textSize="15sp"
+                android:fontFamily="@font/space_grotesk_bold" />
+
+            <!-- FORGOT PIN -->
+            <TextView
+                android:id="@+id/tvForgotPinLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Lupa PIN? Hapus semua data"
+                android:textColor="@color/monetra_red"
+                android:textSize="12sp"
+                android:fontFamily="@font/plus_jakarta_sans_semibold" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

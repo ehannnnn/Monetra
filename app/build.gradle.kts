@@ -43,4 +43,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+    implementation("androidx.biometric:biometric:1.1.0")
 }
